@@ -3,57 +3,96 @@
 </div>
 
 <div *ngIf="user">
-<div class="container py-5">
-  <div class="glass-dashboard p-4 rounded-4 shadow-lg">
-    <!-- Header -->
-    <div class="d-flex align-items-center justify-content-between mb-4">
-      <div class="d-flex align-items-center gap-3">
-        <img [src]="user.image" class="avatar-img" alt="User Image">
-        <div>
-          <h4 class="fw-bold mb-1">{{ user.firstName }} {{ user.lastName }}</h4>
-          <p class="text-muted mb-0"><i class="bi bi-envelope"></i> {{ user.email }}</p>
+  <div class="container py-5">
+    <div class="glass-dashboard p-4 rounded-4 shadow-lg">
+      <!-- Header -->
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex align-items-center gap-3">
+          <img [src]="user.image" class="avatar-img" alt="User Image">
+          <div>
+            <h4 class="fw-bold mb-1">{{ user.firstName }} {{ user.lastName }}</h4>
+            <p class="text-muted mb-0"><i class="bi bi-envelope"></i> {{ user.email }}</p>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-light"><i class="bi bi-gear"></i> Settings</button>
+          <button (click)="LogOut()" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Logout</button>
         </div>
       </div>
-      <div class="d-flex gap-2">
-        <button class="btn btn-outline-light"><i class="bi bi-gear"></i> Settings</button>
-        <button (click)="LogOut()" class="btn btn-danger"><i class="bi bi-box-arrow-right"></i> Logout</button>
-      </div>
-    </div>
 
-    <!-- Tabs -->
-    <ul class="nav nav-tabs mb-3 border-0" id="userTabs">
-      <li class="nav-item">
-        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview">Overview</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#orders">Orders</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#settings">Settings</button>
-      </li>
-    </ul>
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mb-3 border-0" id="userTabs">
+        <li class="nav-item">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview">Overview</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#orders">Orders</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#settings">Settings</button>
+        </li>
+      </ul>
 
-    <!-- Tab Content -->
-    <div class="tab-content">
-      <div class="tab-pane fade show active" id="overview">
-        <div class="row g-4">
-          <div class="col-md-4" *ngFor="let card of userInfoCards">
-            <div class="glass-card p-4 h-100 text-center">
-              <h6 class="text-uppercase text-muted mb-2">{{ card.label }}</h6>
-              <h3 class="text-gradient fw-bold">{{ card.value }}</h3>
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="overview">
+          <div class="row g-4">
+            <div class="col-md-4" *ngFor="let card of userInfoCards">
+              <div class="glass-card p-4 h-100 text-center">
+                <h6 class="text-uppercase text-muted mb-2">{{ card.label }}</h6>
+                <h3 class="text-gradient fw-bold">{{ card.value }}</h3>
+              </div>
             </div>
+          </div>
+        </div>
+
+   <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+
+  <div *ngIf="orders.length === 0" class="empty-orders text-center py-5">
+    <p class="text-muted fs-5">🚫 No orders found yet.</p>
+  </div>
+
+  <div *ngIf="orders.length > 0" class="orders-list container py-4">
+    <h3 class="mb-5 text-center fw-bold">Your Orders</h3>
+
+    <div *ngFor="let order of orders" class="order-card mb-4 p-4 shadow rounded bg-white">
+      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+        <div>
+          <strong>Order ID:</strong> #{{ order.id }}<br>
+          <small class="text-muted">Date: {{ order.date | date:'mediumDate' }}</small>
+        </div>
+        <div class="fw-bold fs-5 text-success order-total">
+          Total: {{ order.total | currency:'JOD':'symbol-narrow' }}
+        </div>
+      </div>
+
+      <div class="order-items border-top pt-3">
+        <div *ngFor="let item of order.products" class="d-flex align-items-center mb-3 item-row">
+          <img [src]="item.thumbnail" alt="{{ item.title }}" class="rounded item-img" />
+          <div class="flex-grow-1 ms-3">
+            <h6 class="mb-1 item-title">{{ item.title }}</h6>
+            <small class="text-muted">
+              Quantity: {{ item.quantity }} × Price: {{ item.price | currency:'JOD':'symbol-narrow' }}
+            </small>
+          </div>
+          <div class="fw-semibold text-primary item-price">
+            {{ (item.quantity * item.price) | currency:'JOD':'symbol-narrow' }}
           </div>
         </div>
       </div>
 
-      <div class="tab-pane fade" id="orders">
-        <p class="text-muted">🚧 Orders section under development.</p>
-      </div>
-
-      <div class="tab-pane fade" id="settings">
-        <p class="text-muted">⚙️ Settings section coming soon!</p>
-      </div>
+      <button class="btn btn-outline-primary btn-sm mt-3 shadow-sm" (click)="viewOrderDetails(order.id)">
+        🔍 View Details
+      </button>
     </div>
   </div>
 </div>
+
+
+        <div class="tab-pane fade" id="settings">
+          <p class="text-muted">⚙️ Settings section coming soon!</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

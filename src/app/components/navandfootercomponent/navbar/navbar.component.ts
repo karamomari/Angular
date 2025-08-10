@@ -52,6 +52,9 @@ export class NavbarComponent implements OnInit {
   loginORlogout() {
     if (this.isLogged) {
       this.Auth.logout()
+
+
+
     } else {
         this.router.navigate(['/Login'], {
           queryParams: { returnUrl: "/" }

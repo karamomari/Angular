@@ -6,7 +6,7 @@ import { IUser } from '../models/iuser';
 import { LoginUser } from '../models/login-user';
 import { LoginResponse } from '../models/login-response';
 import { Router } from '@angular/router';
-import { landreduceser } from '../components/store/lang.reducer';
+import { landreduceser } from '../store/lang.reducer';
 
 @Injectable({
   providedIn: 'root'
