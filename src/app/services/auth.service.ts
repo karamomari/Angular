@@ -12,9 +12,7 @@ import { landreduceser } from '../store/lang.reducer';
   providedIn: 'root'
 })
 export class AuthService {
-  // private _isLoggedIn$ = new BehaviorSubject<boolean>(this.hasToken());
-  // public isLoggedIn$ = this._isLoggedIn$.asObservable();
-
+  private manualLogout = false;
   // بيانات المستخدم
   private _user$ = new BehaviorSubject<IUser | null>(this.getStoredUser());
   public user$ = this._user$.asObservable();
@@ -37,26 +35,29 @@ export class AuthService {
 
 
   logout() {
+    this.manualLogout = true;
     localStorage.removeItem('user_info');
     this._user$.next(null);
+    console.log(this.user$);
+
     this.router.navigateByUrl('/');
   }
 
 
-private getStoredUser(): IUser | null {
-  const userData = localStorage.getItem('user_info');
+  private getStoredUser(): IUser | null {
+    const userData = localStorage.getItem('user_info');
 
-  if (!userData || userData === 'undefined' || userData === 'null') {
-    return null;
-  }
+    if (!userData || userData === 'undefined' || userData === 'null') {
+      return null;
+    }
 
-  try {
-    return JSON.parse(userData);
-  } catch (e) {
-    console.error('Error parsing user_info from localStorage', e);
-    return null;
+    try {
+      return JSON.parse(userData);
+    } catch (e) {
+      console.error('Error parsing user_info from localStorage', e);
+      return null;
+    }
   }
-}
 
 
 
@@ -65,11 +66,9 @@ private getStoredUser(): IUser | null {
   }
 
 
-
-  // isLoggedIn(): boolean {
-  //   return this.hasToken();
-  // }
-
+  isManualLogout() {
+    return this.manualLogout;
+  }
   GetToken(): string {
     return localStorage.getItem('token') ?? '';
   }

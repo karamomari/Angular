@@ -88,7 +88,7 @@ export class CartServiceService {
     }
 
 
-    const token = this.auth.GetToken();
+    const token = this.auth.getCurrentUser();
 
     if (!token) {
       return of('unauthenticated');

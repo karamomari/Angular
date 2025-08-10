@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 import { LoginUser } from '../../../models/login-user';
 
 @Component({
@@ -33,7 +33,7 @@ export class LoginComponent {
     this.authService.login(user).subscribe({
       next: (res) => {
         const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl(returnUrl);
       },
       error: (ere) => {
         this.errorMessage = 'Invalid username or password.';

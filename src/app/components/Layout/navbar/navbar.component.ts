@@ -29,11 +29,11 @@ export class NavbarComponent implements OnInit {
 
     this.Auth.user$.subscribe({
       next: (user) => {
-        if(user){
-        this.isLogged = true;
+        if (user) {
+          this.isLogged = true;
         }
-        else{
-          this.isLogged=false
+        else {
+          this.isLogged = false
         }
       },
       error: () => {
@@ -56,9 +56,9 @@ export class NavbarComponent implements OnInit {
 
 
     } else {
-        this.router.navigate(['/Login'], {
-          queryParams: { returnUrl: "/" }
-        });
+      this.router.navigate(['/Login'], {
+        queryParams: { returnUrl: "/" }
+      });
     }
   }
 

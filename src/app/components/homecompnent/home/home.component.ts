@@ -50,15 +50,15 @@ export class HomeComponent implements OnInit {
     });
 
     this.auth.user$.subscribe({
-      
-      next: (user) => {
-console.log(user);
 
-        if(user){
-        this.isLogged = true;
-      }else{
-        this.isLogged=false;
-      }
+      next: (user) => {
+        // console.log(user);
+
+        if (user) {
+          this.isLogged = true;
+        } else {
+          this.isLogged = false;
+        }
       },
       error: () => {
         Swal.fire({
