@@ -1,0 +1,63 @@
+<div class="container my-5">
+  <!-- 🔍 Search Box -->
+  <div class="row mb-5">
+    <div class="col-md-8 offset-md-2">
+      <input type="text" class="form-control search-box shadow" placeholder="🔍 Search for amazing products..."
+        [(ngModel)]="searchTerm" (input)="filterProductsByTitle()" />
+    </div>
+  </div>
+
+  <!-- 🧭 Category Filter -->
+  <div class="category-scroll d-flex flex-nowrap mb-4 px-2">
+    <button class="btn btn-outline-dark mb-2" [class.active]="!selectedCategory" (click)="filterByCategory('')">
+      All Categories
+    </button>
+    <button *ngFor="let cat of categorys" class="btn btn-outline-primary mb-2"
+      [class.active]="selectedCategory === cat.name" (click)="filterByCategory(cat.name)">
+      {{ cat.name }}
+      <span class="badge bg-light text-dark">{{ cat.productCount }}</span>
+    </button>
+  </div>
+
+  <!-- 🛍️ Products Grid -->
+  <div class="row">
+    @for (product of filteredProducts; track product.id) {
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card product-card h-100">
+        <img [src]="product.thumbnail" class="card-img-top" [alt]="product.title" />
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ product.title }}</h5>
+
+          <p class="card-text text-primary fw-bold">
+            {{ product.price | currency:'JOD':'symbol-narrow' }}
+
+          </p>
+
+          <p class="card-text text-primary fw-bold">
+           reviews {{ product.reviews.length | niceNumberPipe }}
+          </p>
+
+
+          <a [routerLink]="['/product-details', product.id]" class="btn btn-sm btn-primary mt-auto shadow-sm">
+            View Details
+          </a>
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <div class="col-12 text-center">
+      <p class="text-muted">🚫 No products found.</p>
+    </div>
+    }
+  </div>
+</div>
+<div class="d-flex justify-content-center align-items-center mt-4 gap-2">
+  <button class="btn btn-outline-secondary" [disabled]="currentPage === 0" (click)="previousPage()">
+    ⬅ Previous
+  </button>
+  <span>Page {{ currentPage + 1 }}</span>
+  <button class="btn btn-outline-secondary" [disabled]="(currentPage + 1) * pageSize >= totalProducts"
+    (click)="nextPage()">
+    Next ➡
+  </button>
+</div>

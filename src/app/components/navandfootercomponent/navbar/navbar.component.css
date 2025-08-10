@@ -1,0 +1,40 @@
+.nav-cart-btn {
+  transition: all 0.3s ease;
+  border-radius: 2rem;
+}
+
+.nav-cart-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffc107;
+}
+
+.active-link {
+  color: #ffc107 !important;
+  font-weight: bold;
+}
+
+.navbar-brand:hover {
+  color: #ffc107 !important;
+}
+
+/* ضع هذا في component.scss أو styles.scss */
+.nav-link.simple {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .45rem .7rem;
+  border-radius: 8px;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  font-weight: 600;
+}
+.nav-link.simple .icon { opacity: .9; transform: translateY(0); }
+.nav-link.simple:hover,
+.nav-link.simple:focus { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+.nav-link.simple:focus { outline: 3px solid rgba(99,102,241,.12); outline-offset: 3px; }
+.nav-link.simple.active {
+  color: #fff;
+  background: linear-gradient(90deg,#6b5bff 0%, #ff6b81 100%);
+  box-shadow: 0 6px 18px rgba(107,91,255,0.18);
+}

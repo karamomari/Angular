@@ -1,0 +1,63 @@
+<!-- Hero Section -->
+<section class="hero-section text-white text-center d-flex align-items-center justify-content-center">
+  <div class="container hero-content">
+    <h1 class="display-3 fw-bold mb-3 animate-fade">🌟 Welcome to <span class="text-accent">Karam Store</span></h1>
+    <p class="lead mb-4 animate-fade">Discover top-quality products at unbeatable prices.</p>
+    <div class="animate-fade">
+      <a routerLink="/products" class="btn btn-lg btn-accent me-3">🛍️ Browse Products</a>
+      <a *ngIf="!isLogged" [routerLink]="['/Login']" [queryParams]="{ returnUrl: currentUrl }"
+         class="btn btn-lg btn-outline-light">🔐 Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section text-center py-5">
+  <div class="container">
+    <h2 class="mb-5 fw-bold text-dark animate-slide">🚀 Why Shop With Us?</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-3 mb-3" *ngFor="let feature of features">
+        <div class="feature-card shadow-sm animate-fade">
+          <div class="fs-1 mb-2">{{ feature.icon }}</div>
+          <p class="fw-semibold">{{ feature.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Featured Products -->
+<section class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5 animate-slide">🔥 Featured Products</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4 animate-fade" *ngFor="let product of featuredProducts">
+        <div class="card product-card h-100 shadow">
+          <img [src]="product.thumbnail" [alt]="product.title" class="card-img-top product-img" />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="text-muted small mb-2">{{ product.brand }}</p>
+            <p class="small">{{ product.description | slice:0:100 }}...</p>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-primary fw-bold">{{ product.price | currency:'JOD' }}</span>
+              <span class="badge bg-success">{{ product.availabilityStatus }}</span>
+            </div>
+            <div class="d-flex gap-1 mb-2">
+              <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <i class="bi" [ngClass]="star <= product.rating ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+              </ng-container>
+              <span class="ms-1 small text-muted">({{ product.rating }})</span>
+            </div>
+            <a [routerLink]="['/product-details', product.id]" class="btn btn-sm btn-outline-primary w-100 mt-2">
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

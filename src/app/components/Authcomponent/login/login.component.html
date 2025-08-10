@@ -1,0 +1,25 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center">
+  <div class="login-card p-4 shadow">
+    <h3 class="text-center mb-4 fw-bold text-primary">Welcome Back</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" class="form-control" formControlName="username" />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password" />
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger py-2">
+        {{ errorMessage }}
+      </div>
+
+      <button class="btn btn-primary w-100 login-btn" type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </form>
+  </div>
+</div>

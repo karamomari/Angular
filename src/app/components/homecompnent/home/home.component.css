@@ -1,0 +1,96 @@
+.hero-section {
+  height: 90vh;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.text-accent {
+  color: #ffc107;
+}
+
+.btn-accent {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  background-color: #e0a800;
+  color: #fff;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+  object-fit: cover;
+  height: 220px;
+}
+
+.product-card {
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+.animate-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.animate-slide {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.category-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.category-img {
+  object-fit: cover;
+  height: 180px;
+  width: 100%;
+}
