@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve dist/my-app",
     "build": "ng build --configuration production && cp static.json dist/my-app/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
