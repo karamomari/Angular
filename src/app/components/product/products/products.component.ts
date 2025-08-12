@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +19,8 @@ import Swal from 'sweetalert2';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
+  @ViewChild('Nextbtn') Nextbtn!: ElementRef<HTMLButtonElement>;
+  @ViewChild('Prebtn') Prevbtn!: ElementRef<HTMLButtonElement>;
   allProducts: Iproduct[] = [];
   filteredProducts: Iproduct[] = [];
   selectedCategory: string = '';
@@ -50,12 +52,14 @@ export class ProductsComponent implements OnInit {
   }
 
 
+
   loadProducts() {
     const skip = this.currentPage * this.pageSize;
     this.productService.GetAllProdectWithNext(skip, this.pageSize).subscribe({
       next: (res) => {
         this.allProducts = res;
         this.filteredProducts = [...this.allProducts];
+        this.filterProducts()
       },
       error: (err) => {
         Swal.fire({
@@ -81,7 +85,7 @@ export class ProductsComponent implements OnInit {
       this.categoryService.getProductsByCategory(this.selectedCategory).subscribe({
         next: (res) => {
           this.filteredProducts = res.products;
-          this.filterProductsByTitle()
+          this.CheakNextAndPre()
         },
         error: (err) => {
           alert('Error loading category products: ' + err)
@@ -97,6 +101,7 @@ export class ProductsComponent implements OnInit {
 
   filterByCategory(category: string) {
     this.selectedCategory = category;
+    this.currentPage = 0;
     this.filterProducts();
   }
 
@@ -115,5 +120,11 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+
+  private CheakNextAndPre() {
+    this.Prevbtn.nativeElement.disabled = (this.currentPage === 0);
+    this.Nextbtn.nativeElement.disabled = (this.filteredProducts.length < this.pageSize);
+
+  }
 
 }

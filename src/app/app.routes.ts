@@ -6,6 +6,7 @@ import { NotfaundComponent } from './components/Notfaund/notfaund/notfaund.compo
 import { UserDashboardComponent } from './components/UserComponents/user-dashboard/user-dashboard.component';
 import { ProductsComponent } from './components/product/products/products.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
         {path:'',pathMatch:'full',redirectTo:'Home'},
@@ -15,6 +16,6 @@ export const routes: Routes = [
     {path:'Login',component:LoginComponent},
     {path:'login',component:LoginComponent},
     {path:'cart',component:CartComponent},
-    {path:'UserDashboard',component:UserDashboardComponent},
+    {path:'UserDashboard',component:UserDashboardComponent,canActivate:[authGuard]},
     { path: '**', component: NotfaundComponent }
 ];

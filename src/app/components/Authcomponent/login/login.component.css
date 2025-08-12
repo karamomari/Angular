@@ -38,3 +38,61 @@
   background-color: #0b5ed7;
   transform: scale(1.02);
 }
+
+
+/* PHONE */
+
+@media (max-width: 576px) {
+  .login-wrapper {
+    padding: 1rem;
+    background: linear-gradient(135deg, #4a90e2, #50e3c2); 
+  }
+
+  .login-card {
+    max-width: 100%;
+    margin: 0 1rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 2.5rem 2rem;
+    transform: none !important;
+  }
+
+  .login-card:hover {
+    transform: none;
+  }
+
+  .login-card h3 {
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+    color: #0a4f7a;
+    text-align: center;
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .login-card .form-control {
+    border-radius: 12px;
+    font-size: 1.1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .login-btn {
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem;
+    background: linear-gradient(90deg, #0b5ed7, #3ac7f3);
+    box-shadow: 0 4px 12px rgba(11, 94, 215, 0.6);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .login-btn:hover,
+  .login-btn:focus {
+    background: linear-gradient(90deg, #3ac7f3, #0b5ed7);
+    box-shadow: 0 6px 20px rgba(58, 199, 243, 0.8);
+  }
+}

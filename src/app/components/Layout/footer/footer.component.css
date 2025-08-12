@@ -14,3 +14,76 @@ footer a {
 footer a:hover {
   color: #007bff;
 }
+
+
+/* PHONE */
+
+
+@media (max-width: 576px) {
+  footer {
+    padding: 2rem 1rem 3rem 1rem;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+  }
+
+  footer h6 {
+    color: #f1f1f1;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  footer .container > .row {
+    flex-direction: column !important;
+    gap: 1.8rem;
+  }
+
+  footer .col-md-3,
+  footer .col-md-2,
+  footer .col-md-4 {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 0 !important;
+  }
+
+  footer p,
+  footer a,
+  footer small {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+  }
+
+  footer a {
+    display: inline-block;
+    margin: 0.3rem 0;
+    font-weight: 600;
+  }
+
+  footer a:hover {
+    color: #a0d8f7;
+  }
+
+  footer .d-flex.gap-3 {
+    justify-content: center;
+  }
+
+  footer .d-flex.gap-3 a {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+
+  footer .d-flex.gap-3 a:hover {
+    color: #ffdd57;
+  }
+
+  footer > div.text-center {
+    color: #d1d1d1;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+}

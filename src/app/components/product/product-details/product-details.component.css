@@ -34,3 +34,107 @@
     padding: 0 1rem;
   }
 }
+
+
+
+/* Phone */
+
+
+@media (max-width: 576px) {
+  .product-details .row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .main-image img.product-main-img {
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+    max-height: 300px;
+    object-fit: contain;
+  }
+
+  .product-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .product-thumb:hover,
+  .product-thumb:focus {
+    border-color: #0d6efd;
+    outline: none;
+  }
+
+  .product-details .col-md-7 > .bg-white {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-details h2.fw-bold {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #0d6efd;
+  }
+  .product-details p.text-muted {
+    font-size: 1rem;
+  }
+  .product-details h3.text-danger {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.7em;
+    border-radius: 12px;
+  }
+
+  .info-cards .info-item h6 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+  }
+  .info-cards .info-item p {
+    font-size: 0.9rem;
+    color: #495057;
+  }
+
+  .product-details .btn {
+    font-size: 1.1rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 30px;
+    box-shadow: 0 6px 18px rgba(13, 110, 253, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .product-details .btn-primary {
+    background: linear-gradient(90deg, #6b5bff 0%, #ff6b81 100%);
+    border: none;
+    color: #fff;
+  }
+  .product-details .btn-primary:hover {
+    background: linear-gradient(90deg, #ff6b81 0%, #6b5bff 100%);
+    box-shadow: 0 8px 24px rgba(255, 107, 129, 0.7);
+  }
+  .product-details .btn-outline-dark {
+    color: #222;
+    border-color: #222;
+  }
+  .product-details .btn-outline-dark:hover {
+    background-color: #222;
+    color: #fff;
+  }
+
+  .product-details .d-flex.align-items-center.gap-2 button {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  .product-details button.btn-secondary {
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    border-radius: 30px;
+  }
+}

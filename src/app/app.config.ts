@@ -14,3 +14,4 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([athInterceptor, LoadingInterceptor])),
     provideToastr(), provideStore(), provideEffects()]
 };
+  

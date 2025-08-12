@@ -38,3 +38,105 @@
   background: linear-gradient(90deg,#6b5bff 0%, #ff6b81 100%);
   box-shadow: 0 6px 18px rgba(107,91,255,0.18);
 }
+
+
+/* PHONE */
+
+
+@media (max-width: 576px) {
+  .navbar-toggler {
+    border-radius: 12px;
+    padding: 0.4rem 0.7rem;
+    transition: background-color 0.3s ease;
+  }
+  .navbar-toggler:hover,
+  .navbar-toggler:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .navbar-toggler-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .navbar {
+    padding: 1rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  #mainNavbar {
+    background-color: #222831;
+    margin-top: 1rem;
+    border-radius: 14px;
+    padding: 1rem;
+  }
+
+  #mainNavbar ul.navbar-nav {
+    flex-direction: column !important;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+
+  #mainNavbar .nav-link,
+  #mainNavbar button.nav-cart-btn {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #mainNavbar .nav-link {
+    color: #eeeeee;
+  }
+
+  #mainNavbar .nav-link:hover,
+  #mainNavbar .nav-link.active-link {
+    background: linear-gradient(90deg, #6b5bff 0%, #ff6b81 100%);
+    color: white !important;
+    box-shadow: 0 6px 18px rgba(107, 91, 255, 0.18);
+  }
+
+  .nav-cart-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #00adb5, #00ffea);
+    border: none;
+    color: #222831;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0, 219, 211, 0.4);
+  }
+
+  .nav-cart-btn:hover {
+    background: linear-gradient(90deg, #00ffea, #00adb5);
+    color: #111;
+    box-shadow: 0 8px 24px rgba(0, 255, 230, 0.6);
+  }
+
+  #mainNavbar li.nav-item:last-child a.btn {
+    width: 100%;
+    margin-top: 0.6rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    padding: 0.7rem 0;
+  }
+
+  .nav-link.simple {
+    justify-content: center !important;
+    font-size: 1.1rem;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #6b5bff 0%, #ff6b81 100%);
+    color: white !important;
+    box-shadow: 0 6px 18px rgba(107, 91, 255, 0.25);
+  }
+
+  .nav-link.simple .icon {
+    width: 20px;
+    height: 20px;
+  }
+}

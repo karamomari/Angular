@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterEvent, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  @ViewChild('navbarCollapse') navbarCollapse!: ElementRef;
   isLogged: boolean = false;
   cartProducts: CartItem[] = [];
   cartLength: number = 0
@@ -62,6 +63,14 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+
+  closeNavbar() {
+    const el = this.navbarCollapse.nativeElement;
+    if (el.classList.contains('show')) {
+      el.classList.remove('show');
+      el.style.height = '0px';
+    }
+  }
 
 
 }

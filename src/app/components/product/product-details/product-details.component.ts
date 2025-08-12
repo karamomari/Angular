@@ -10,6 +10,7 @@ import { CartServiceService } from '../../../services/cart-service.service';
 import { CartComponent } from '../../cartcomponent/cart/cart.component';
 import { CartItem } from '../../../models/cart-item';
 import { ToastrModule } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
-export class ProductDetailsComponent implements OnInit,OnDestroy {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
   product!: Iproduct
   id: number = 0;
   IdOfAllProduct: number[] = []
@@ -40,7 +41,7 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
       this.protectservices.GetProdectById(this.id).subscribe({
         next: (value) => {
           this.product = value;
-          this.selectedImage=value.images[0]
+          this.selectedImage = value.images[0]
         },
         error: (err) => {
           console.log(err);
@@ -82,10 +83,19 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
 
   AddToCart(product: Iproduct) {
     this.cart.addToCart(product)
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: `${product.title} added to cart`,
+      showConfirmButton: false,
+      timer: 1500,
+      toast: true,
+    });
+
   }
 
 
-  ngOnDestroy(){
-    
+  ngOnDestroy() {
+
   }
 }
