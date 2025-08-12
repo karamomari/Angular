@@ -3,7 +3,7 @@
   <div class="container hero-content">
     <h1 class="display-3 fw-bold mb-3 animate-fade">🌟 Welcome to <span class="text-accent">Karam Store</span></h1>
     <p class="lead mb-4 animate-fade">Discover top-quality products at unbeatable prices.</p>
-    <div class="animate-fade">
+    <div class="animate-fade" id="loginlink">
       <a routerLink="/products" class="btn btn-lg btn-accent me-3">🛍️ Browse Products</a>
       <a *ngIf="!isLogged" [routerLink]="['/Login']" [queryParams]="{ returnUrl: currentUrl }"
          class="btn btn-lg btn-outline-light">🔐 Login</a>
