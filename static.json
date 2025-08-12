@@ -2,5 +2,10 @@
   "root": "dist/my-app",
   "routes": {
     "/**": "index.html"
+  },
+  "headers": {
+    "/**": {
+      "Cache-Control": "public, max-age=0, must-revalidate"
+    }
   }
 }
