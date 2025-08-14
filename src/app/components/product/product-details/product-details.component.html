@@ -1,6 +1,5 @@
 <div class="product-details container my-5">
   <div class="row g-4">
-    <!-- صورة المنتج -->
     <div class="col-md-5">
       <div class="main-image mb-3">
         <img [src]="selectedImage || product.thumbnail"
@@ -17,7 +16,6 @@
       </div>
     </div>
 
-    <!-- معلومات المنتج -->
     <div class="col-md-7">
       <div class="bg-white p-4 rounded shadow-sm">
         <h2 class="fw-bold mb-1 text-primary">{{ product.title }}</h2>
@@ -77,5 +75,4 @@
   </div>
 </div>
 
-<!-- المودال -->
 <app-cart></app-cart>
