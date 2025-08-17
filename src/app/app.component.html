@@ -1,15 +1,15 @@
 <app-navbar></app-navbar>
 
-<div >
-<ng-container *ngIf="loading$ | async">
-  <div class="loading-overlay">
-    <div class="orbit-spinner">
-      <div class="orbit"></div>
+<main>
+  <ng-container *ngIf="loading$ | async">
+    <div class="loading-overlay">
+      <div class="orbit-spinner">
+        <div class="orbit"></div>
+      </div>
     </div>
-  </div>
-</ng-container>
+  </ng-container>
 
   <router-outlet></router-outlet>
-</div>
+</main>
 
 <app-footer></app-footer>

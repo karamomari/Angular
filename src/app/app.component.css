@@ -1,3 +1,33 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  
+}
+
+main {
+  flex: 1;                     
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+main > router-outlet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+app-footer {
+  flex-shrink: 0;
+}
+
+
 .loading-overlay {
   position: fixed;
   top: 0;

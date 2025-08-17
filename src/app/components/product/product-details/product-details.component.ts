@@ -7,10 +7,10 @@ import { Location } from '@angular/common';
 import { Iproduct } from '../../../models/iproduct';
 import { ProductsService } from '../../../services/products.service';
 import { CartServiceService } from '../../../services/cart-service.service';
-import { CartComponent } from '../../cartcomponent/cart/cart.component';
 import { CartItem } from '../../../models/cart-item';
 import { ToastrModule } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { CartComponent } from '../../cartcomponent/cart/cart.component';
 
 
 @Component({

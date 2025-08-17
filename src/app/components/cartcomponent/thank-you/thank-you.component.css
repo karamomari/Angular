@@ -1,0 +1,94 @@
+:root {
+  --gradient: linear-gradient(135deg, #ff7e5f, #feb47b, #86A8E7, #91EAE4);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-blur: 15px;
+}
+
+body, html, .thank-you-page {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #1f1c2c, #928dab);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.thank-you-page {
+  flex: 1;                      /* يغطي المساحة المتاحة فقط */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(120deg, #1f1c2c, #928dab);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  color: #fff;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  z-index: 10;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+
+.text-gradient {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffd700, #ff8c00, #ff69b4, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 1px rgba(255,255,255,0.9);
+
+  text-shadow: 
+     0 0 3px rgba(255,255,255,0.8),
+     0 0 8px rgba(255,255,255,0.6),
+     0 0 12px rgba(255,255,255,0.4);
+
+  animation: textGlow 2s infinite alternate;
+}
+
+
+.btn-glass {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-glass:hover {
+  transform: scale(1.05);
+  background: rgba(255,255,255,0.3);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.3);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(50px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes textGlow {
+  0% { filter: drop-shadow(0 0 5px #fff);}
+  100% { filter: drop-shadow(0 0 20px #fff);}
+}
+
+/* Particles canvas */
+#particles {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+}

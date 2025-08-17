@@ -5,10 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { Iproduct } from '../../../models/iproduct';
 import { CategoryService } from '../../../services/category.service';
 import { ProductsService } from '../../../services/products.service';
-import { CartComponent } from '../../cartcomponent/cart/cart.component';
 import { ICategory } from '../../../models/ICategory';
 import { NiceNumberPipePipe } from '../../../pipe/nice-number-pipe.pipe';
 import Swal from 'sweetalert2';
+import { CartComponent } from '../../cartcomponent/cart/cart.component';
 
 
 @Component({

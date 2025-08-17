@@ -1,0 +1,104 @@
+<div class="checkout-container container my-5 p-4 position-relative">
+  <h2 class="mb-4 text-center title">🛒 Your Shopping Cart</h2>
+
+  <div *ngIf="!cartlength || cart.length === 0" class="alert alert-warning text-center">
+    Your cart is empty
+  </div>
+
+  <div *ngIf="cartlength > 0" class="cart-items mb-4">
+    <div *ngFor="let item of cart" class="cart-item d-flex align-items-center justify-content-between mb-3">
+      <div class="d-flex align-items-center">
+        <img [src]="item.thumbnail" alt="{{item.title}}" class="item-img me-3">
+        <div>
+          <h6 class="mb-1">{{ item.title }}</h6>
+          <small>Quantity: {{ item.quantity }}</small>
+        </div>
+      </div>
+      <div class="fw-bold">{{ item.price | currency:'USD' }}</div>
+
+      <button class="btn btn-sm btn-primary ms-3" (click)="openDetails(item)">
+        View Details
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="cart.length > 0" class="mb-4 text-end cart-total">
+    <samp>Total: {{ cartTotal | currency:'USD' }}</samp>
+  </div>
+
+<form [formGroup]="paymentForm" (ngSubmit)="pay()" *ngIf="cartlength > 0" class="payment-form">
+  <h5 class="mb-3">💳 Card Details</h5>
+
+  <!-- Card Number -->
+  <div class="mb-3">
+    <label class="form-label">Card Number</label>
+    <input formControlName="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" />
+    <div class="text-danger mt-1" *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid">
+      <small *ngIf="paymentForm.get('cardNumber')?.errors?.['required']">Card number is required</small>
+      <small *ngIf="paymentForm.get('cardNumber')?.errors?.['minlength']">Card number must be 16 digits</small>
+      <small *ngIf="paymentForm.get('cardNumber')?.errors?.['maxlength']">Card number must be 16 digits</small>
+      <small *ngIf="paymentForm.get('cardNumber')?.errors?.['pattern']">Card number must contain only digits</small>
+    </div>
+  </div>
+
+  <!-- Expiry Date -->
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Expiry Date</label>
+      <input formControlName="expiry" class="form-control" placeholder="MM/YY" />
+      <div class="text-danger mt-1" *ngIf="paymentForm.get('expiry')?.touched && paymentForm.get('expiry')?.invalid">
+        <small *ngIf="paymentForm.get('expiry')?.errors?.['required']">Expiry date is required</small>
+        <small *ngIf="paymentForm.get('expiry')?.errors?.['pattern']">Expiry format must be MM/YY</small>
+      </div>
+    </div>
+
+    <!-- CVV -->
+    <div class="col">
+      <label class="form-label">CVV</label>
+      <input formControlName="cvv" class="form-control" placeholder="123" />
+      <div class="text-danger mt-1" *ngIf="paymentForm.get('cvv')?.touched && paymentForm.get('cvv')?.invalid">
+        <small *ngIf="paymentForm.get('cvv')?.errors?.['required']">CVV is required</small>
+        <small *ngIf="paymentForm.get('cvv')?.errors?.['minlength']">CVV must be 3 digits</small>
+        <small *ngIf="paymentForm.get('cvv')?.errors?.['maxlength']">CVV must be 3 digits</small>
+        <small *ngIf="paymentForm.get('cvv')?.errors?.['pattern']">CVV must contain only digits</small>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn-pay w-100 py-2 fw-bold" [disabled]="paymentForm.invalid">
+    Confirm Payment 💳
+  </button>
+</form>
+
+
+</div>
+
+
+
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content product-modal p-3">
+      
+      <div class="text-center mb-3">
+        <img [src]="selectedItem?.thumbnail" class="product-img" alt="{{ selectedItem?.title }}">
+      </div>
+
+      <h5 class="text-center fw-bold mb-2">{{ selectedItem?.title }}</h5>
+
+      <p class="text-center mb-1"><strong>Price:</strong> {{ selectedItem?.price | currency:'USD' }}</p>
+      <p class="text-center mb-1"><strong>Availability:</strong> {{ selectedItem?.availabilityStatus }}</p>
+      <p class="text-center text-muted mb-3" style="font-size: 0.9rem;">
+        {{ selectedItem?.category }} • {{ selectedItem?.brand }}
+      </p>
+
+      <p class="text-center text-secondary mb-3 product-desc">
+        {{ selectedItem?.description | slice:0:80 }}...
+      </p>
+
+      <div class="text-center">
+        <button class="btn btn-outline-secondary btn-sm px-4" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

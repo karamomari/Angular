@@ -4,7 +4,7 @@ import { Iproduct } from '../models/iproduct';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
-import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, catchError, delay, map, Observable, of } from 'rxjs';
 import { CartItem } from '../models/cart-item';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
@@ -105,7 +105,34 @@ export class CartServiceService {
       map(() => 'success')
     );
   }
-  
+
+
+
+
+checkout2(paymentData?: any): Observable<'success' | 'failure'> {
+
+  const cart = this.getCart();
+  const token = this.auth.getCurrentUser();
+
+  if (!cart.length || !token) return of('failure');
+
+  return of('success' as const).pipe(
+    delay(1000) 
+  );
+}
+
+
+
+  clearCart() {
+    this.cartSubject.next([]);
+  }
+
+
+  setCurrentCart(cart: CartItem[]) {
+    this.cartSubject.next(cart);
+  }
+
+
   getUserOrders(userId: number): Observable<IOrder[]> {
     return this.http.get<{ carts: IOrder[] }>(`${environment.baseurl}/carts/user/${userId}`)
       .pipe(

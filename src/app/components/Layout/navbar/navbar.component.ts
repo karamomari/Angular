@@ -4,8 +4,8 @@ import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { CartItem } from '../../../models/cart-item';
 import { CartServiceService } from '../../../services/cart-service.service';
-import { CartComponent } from '../../cartcomponent/cart/cart.component';
 import Swal from 'sweetalert2';
+import { CartComponent } from '../../cartcomponent/cart/cart.component';
 
 @Component({
   selector: 'app-navbar',
