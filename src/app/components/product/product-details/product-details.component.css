@@ -139,3 +139,11 @@
     border-radius: 30px;
   }
 }
+@media (max-width: 366px) {
+  .product-details .d-flex.align-items-center.gap-2 button {
+    flex: none; /* يمنع الزر من التمدد */
+    width: 48%; /* أو أي عرض مناسب */
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+}
